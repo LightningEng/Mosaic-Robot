@@ -115,20 +115,68 @@ def drummingMechanism():
         #makes the robot drum once
         if drumming == True:
             drum()
+            
+
+
+def getInputByKeyboard():
+    while True:
+        
+        arr = []
+        user_input = ''
+
+        print("Must Enter 25 Numbers! Only 0s and 1s")
+
+        numOnes = 0
+
+        while len(arr) < 25: #get 25 cubes
+            #Get input from user
+            user_input = input('Enter a number either 0 or 1: ')
+            
+            if (user_input.isdigit()): #Check if valid data, specifically if it is a digit
+                num = int(user_input)
+                if num == 0 or num == 1: #if 0 or 1, store it
+                    arr.append(num)
+                    if num == 1:
+                        numOnes += 1 #increment number of 1s
+                    
+                else:
+                    print("Invalid input! Only 0 or 1")
+            else:
+                print("Invalid input! Only 0 or 1")
+                
+        if numOnes <= 15: #Check if the number of required cubes do not exceed 15
+            if numOnes == 0:
+                arr = []
+            break
+        else:
+            numOnes = 0
+            arr = []
+            print("Too many 1s. Start from scratch!")
+    
+    return arr
+
+
 
 def marchingBand():
     try:
-        #Define the threads
-        fluteSubsystem = Thread(target=digitalFluteMechanism)
-        drumSubsystem = Thread(target=drummingMechanism)
         
-        #Start the threads
-        fluteSubsystem.start()
-        drumSubsystem.start()
+        input = getInputByKeyboard()
         
-        #Continue running the program until emergency stop button is pressed
-        while not STOP_TOUCH_SENSOR.is_pressed():
-            sleep(DELAY_SEC)
+        print(input)
+        
+        
+        
+#         #Define the threads
+#         fluteSubsystem = Thread(target=digitalFluteMechanism)
+#         drumSubsystem = Thread(target=drummingMechanism)
+#         
+#         #Start the threads
+#         fluteSubsystem.start()
+#         drumSubsystem.start()
+#         
+#         #Continue running the program until emergency stop button is pressed
+#         while not STOP_TOUCH_SENSOR.is_pressed():
+#             sleep(DELAY_SEC)
         
     except BaseException:  # capture all exceptions including KeyboardInterrupt (Ctrl-C)
         pass
