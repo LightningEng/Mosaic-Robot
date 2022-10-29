@@ -1,4 +1,4 @@
-# Lab 3 - Sensors and Testing
+# Sensors and Testing
 
 _Read this entire document before doing anything._
 
