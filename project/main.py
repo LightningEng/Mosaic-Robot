@@ -10,14 +10,6 @@ from time import sleep
 
 from threading import Thread
 
-# DELAY_SEC = 0.01  # seconds of delay between measurements
-# MOTOR_DELAY_SEC = 0.01 
-# INITIAL_POSITION = 0
-# TARGET_POSITION = 30
-# MOTOR_POWER = 100
-# 
-# SOUND = sound.Sound(duration=1, pitch="A4", volume=60)
-
 print("Program start.\nWaiting for sensors to turn on...")
 
 
@@ -74,25 +66,25 @@ arr = []
  
 def button0Checking():
     global arr
-    while numElements[0] < 25:
-        if (Input_0_SENSOR.is_pressed()):
+    while numElements[0] < 25: #Until the input array is filled
+        if (Input_0_SENSOR.is_pressed()): #Update input if 0 is pressed
             print("0 pressed")
             numElements[0] += 1
             arr.append(0)
-            while Input_0_SENSOR.is_pressed():
+            while Input_0_SENSOR.is_pressed(): #Ensure not to continuously take 0s while the touch sensor is on hold
                 sleep(0.01)
         sleep(0.01)
     return
         
 def button1Checking():
     global arr
-    while numElements[0] < 25:
-        if (Input_1_SENSOR.is_pressed()):
+    while numElements[0] < 25: #Until the input array is filled
+        if (Input_1_SENSOR.is_pressed()): #Update input if 1 is pressed
             print("1 pressed")
             numElements[0] += 1
             numElements[1] += 1
             arr.append(1)
-            while Input_1_SENSOR.is_pressed():
+            while Input_1_SENSOR.is_pressed(): #Ensure not to continuously take 1s while the touch sensor is on hold
                 sleep(0.01)
         sleep(0.01)
     return
@@ -101,7 +93,7 @@ def button1Checking():
 def mosaic():
     try:
         global arr
-        while True:
+        while True: #Get input by touch sensors
             #Define the threads
             button0CheckingSystem = Thread(target=button0Checking)
             button1CheckingSystem = Thread(target=button1Checking)
@@ -113,7 +105,8 @@ def mosaic():
             #Keep running until 25 elements have been acquired
             while (numElements[0] < 25) :
                 sleep(0.01)
-                
+            
+            #End the threads
             button0CheckingSystem.join()
             button1CheckingSystem.join()
             
