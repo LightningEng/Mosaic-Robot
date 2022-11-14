@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
 
 """
+<<<<<<< Updated upstream
 Module to push the cube using the slider
+=======
+Module to play sounds when ultrasonic sensor detects object within hot-encoded ranges.
+>>>>>>> Stashed changes
 This file must be run on the robot.
 """
 
@@ -10,7 +14,11 @@ from time import sleep
 
 from math import pi
 
+<<<<<<< Updated upstream
 DELAY_SEC = 2  # seconds of delay between measurements
+=======
+DELAY_SEC = 1.5  # seconds of delay between measurements
+>>>>>>> Stashed changes
 
 print("Program start.\nWaiting for sensors to turn on...")
 
@@ -29,11 +37,17 @@ print("Done waiting.")
 
 
 
+<<<<<<< Updated upstream
 def wheelMove(distance, direction):
+=======
+def wheelMove(angle, direction):
+    
+>>>>>>> Stashed changes
     #Set Power and Speed Limits of the Wheels
     TANK_WHEEL.set_limits(MOTOR_POWER)
     
     #Move the wheels with respect to distance and direction
+<<<<<<< Updated upstream
     if (direction == 1): #Move Forward
         TANK_WHEEL.set_position_relative(int(-1*distance*DIST_TO_DEGS_TANK_WHEEL))
     else : #Move Backward
@@ -41,15 +55,71 @@ def wheelMove(distance, direction):
     
     #rest the engine
     sleep(DELAY_SEC)
+=======
+    if (direction == 1):
+        TANK_WHEEL.set_position_relative(int(-1*angle))
+    else :
+        TANK_WHEEL.set_position_relative(int(angle))
+    
+    #rest the engine
+    sleep(DELAY_SEC)
+    #power down the wheel engines
+    #TANK_WHEEL.set_limits(0)
+    #rest the engine
+    #sleep(0.5)
+    
+    
+>>>>>>> Stashed changes
 
     
 
 def tankMechanism():
     
     try:
+<<<<<<< Updated upstream
         #Test the move - forward and backward with the same distance
         wheelMove(0.20,1)
         wheelMove(0.20,0)
+=======
+        #Initialize Motor Defaults
+        
+        #TANK_WHEEL.reset_encoder()
+        
+        TANK_WHEEL.set_limits(MOTOR_POWER)
+        TANK_WHEEL.set_position_relative(100)
+        sleep(DELAY_SEC)
+        TANK_WHEEL.set_position_relative(-710)
+        sleep(DELAY_SEC)
+        TANK_WHEEL.set_position_relative(720)
+        sleep(DELAY_SEC)
+        
+        
+        TANK_WHEEL.set_position_relative(-600)
+        sleep(DELAY_SEC)
+        TANK_WHEEL.set_position_relative(610)
+        sleep(DELAY_SEC)
+        
+        TANK_WHEEL.set_position_relative(-480)
+        sleep(DELAY_SEC)
+        TANK_WHEEL.set_position_relative(490)
+        sleep(DELAY_SEC)
+        
+        
+        TANK_WHEEL.set_position_relative(-360)
+        sleep(DELAY_SEC)
+        TANK_WHEEL.set_position_relative(370)
+        sleep(DELAY_SEC)
+        
+        TANK_WHEEL.set_position_relative(-240)
+        sleep(DELAY_SEC)
+        TANK_WHEEL.set_position_relative(130)
+        sleep(DELAY_SEC)
+        
+        
+        
+        
+        
+>>>>>>> Stashed changes
         
     except BaseException:  # capture all exceptions including KeyboardInterrupt (Ctrl-C)
         pass
