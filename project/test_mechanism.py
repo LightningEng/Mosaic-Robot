@@ -12,11 +12,11 @@ from math import pi
 
 DELAY_SEC = 1.5  # seconds of delay between measurements
                 #j
-input_array = [ [0,0,1,0,1], #i
-                [0,1,1,1,0],
-                [0,1,1,0,1],
-                [0,1,1,1,0],
-                [0,0,0,0,1]]
+input_array = [ [0,0,0,0,0], #i
+                [0,0,0,0,0],
+                [0,0,0,0,0],
+                [0,0,0,0,0],
+                [1,1,1,1,1]]
 
 #x values starting left to right
 x_values = [0,-115, -230, -345, -460]
@@ -56,8 +56,9 @@ def algorithm():
                 sleep(DELAY_SEC)
                 TANK_WHEEL.set_position_relative(110) #retract claw to drop cube
                 sleep(DELAY_SEC)
-                tmp = input_array[i].copy() 
-                get_last = 4 - tmp.reverse().index(1) #find positon last 1 in current row
+                tmp = input_array[i].copy()
+                tmp.reverse()
+                get_last = 4 - tmp.index(1) #find positon last 1 in current row
             for j in range(len(input_array[i])): #iterate through the columns
                 if input_array[i][j] == 1:
                     TANK_WHEEL.set_position_relative(y_values[j]) #place cube is proper column
@@ -67,6 +68,10 @@ def algorithm():
                         sleep(DELAY_SEC)
                     else:
                         TANK_WHEEL.set_position_relative(-1*y_values[j]+10) #retract arm all the way and next cube drops into claw
+            
+        LEFT_WHEEL.set_position(0) #move arm to that row
+        RIGHT_WHEEL.set_position(0)
+        sleep(DELAY_SEC)
     except BaseException:  # capture all exceptions including KeyboardInterrupt (Ctrl-C)
         pass
     finally:
