@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-Module to move the slider sunsystem that pushes the cube
+Module to move the slider subsystem that pushes the cube
 This file must be run on the robot.
 """
 
