@@ -51,47 +51,39 @@ def wheelMove(angle, direction):
 
     
 
-def tankMechanism():
+def relative_station_mechanism():
     
     try:
         #Initialize Motor Defaults
-        
-        #TANK_WHEEL.reset_encoder()
-        
         TANK_WHEEL.set_limits(MOTOR_POWER)
-        TANK_WHEEL.set_position_relative(100)
-        sleep(DELAY_SEC)
-        TANK_WHEEL.set_position_relative(-710)
-        sleep(DELAY_SEC)
-        TANK_WHEEL.set_position_relative(720)
-        sleep(DELAY_SEC)
         
-        
-        TANK_WHEEL.set_position_relative(-600)
+        #The push-pull stick is set up such that it blocks the cubes from touching the ground.
+        TANK_WHEEL.set_position_relative(100) #Retract the system such that the cube is placed on the ground from the cube tower (disposal)
         sleep(DELAY_SEC)
-        TANK_WHEEL.set_position_relative(610)
+        TANK_WHEEL.set_position_relative(-710) #Push the cube to the last row (5th row) of the grid
+        sleep(DELAY_SEC)
+        TANK_WHEEL.set_position_relative(720) #Retract the stick to initial position such that it blocks the cubes from touching the ground.
         sleep(DELAY_SEC)
         
-        TANK_WHEEL.set_position_relative(-480)
+        TANK_WHEEL.set_position_relative(-600) #Push the cube to the 4th row of the grid
         sleep(DELAY_SEC)
-        TANK_WHEEL.set_position_relative(490)
-        sleep(DELAY_SEC)
-        
-        
-        TANK_WHEEL.set_position_relative(-360)
-        sleep(DELAY_SEC)
-        TANK_WHEEL.set_position_relative(370)
+        TANK_WHEEL.set_position_relative(610) #Retract the stick to initial position such that it blocks the cubes from touching the ground.
         sleep(DELAY_SEC)
         
-        TANK_WHEEL.set_position_relative(-240)
+        TANK_WHEEL.set_position_relative(-480) #Push the cube to the 3rd row of the grid
         sleep(DELAY_SEC)
-        TANK_WHEEL.set_position_relative(130)
+        TANK_WHEEL.set_position_relative(490) #Retract the stick to initial position such that it blocks the cubes from touching the ground.
         sleep(DELAY_SEC)
         
+        TANK_WHEEL.set_position_relative(-360) #Push the cube to the 2nd row of the grid
+        sleep(DELAY_SEC)
+        TANK_WHEEL.set_position_relative(370) #Retract the stick to initial position such that it blocks the cubes from touching the ground.
+        sleep(DELAY_SEC)
         
-        
-        
-        
+        TANK_WHEEL.set_position_relative(-240) #Push the cube to the 1rst row of the grid
+        sleep(DELAY_SEC)
+        TANK_WHEEL.set_position_relative(130) #Retract the stick to initial position such that it blocks the cubes from touching the ground.
+        sleep(DELAY_SEC)
         
     except BaseException:  # capture all exceptions including KeyboardInterrupt (Ctrl-C)
         pass
@@ -100,4 +92,4 @@ def tankMechanism():
         exit()
 
 if __name__ == "__main__":
-    tankMechanism()
+    relative_station_mechanism()

@@ -57,48 +57,44 @@ def move(distance, direction):
     sleep(DELAY_SEC)
 
 
-def push_pull_Mechanism():
-
+def base_station_mechanism():
+    
     try:
         #Initialize Motor Defaults
-        
         LEFT_WHEEL.reset_encoder()
         RIGHT_WHEEL.reset_encoder()
-        
         LEFT_WHEEL.set_limits(MOTOR_POWER)
         RIGHT_WHEEL.set_limits(MOTOR_POWER)
         
+        #Set to initial state which is by default column 1
         LEFT_WHEEL.set_position(0)
         RIGHT_WHEEL.set_position(0)
-        
         sleep(DELAY_SEC)
         
+        #Go to column 2
         LEFT_WHEEL.set_position(-115)
         RIGHT_WHEEL.set_position(-115)
-        
         sleep(DELAY_SEC)
         
+        #Go to column 3
         LEFT_WHEEL.set_position(-230)
         RIGHT_WHEEL.set_position(-230)
-        
         sleep(DELAY_SEC)
         
+        #Go to column 4
         LEFT_WHEEL.set_position(-345)
         RIGHT_WHEEL.set_position(-345)
-        
         sleep(DELAY_SEC)
         
+        #Go to column 5
         LEFT_WHEEL.set_position(-460)
         RIGHT_WHEEL.set_position(-460)
-        
         sleep(DELAY_SEC)
         
+        #Return to initial state
         LEFT_WHEEL.set_position(0)
         RIGHT_WHEEL.set_position(0)
-        
         sleep(DELAY_SEC)
-        
-        
 
     except BaseException:  # capture all exceptions including KeyboardInterrupt (Ctrl-C)
         pass
@@ -107,7 +103,7 @@ def push_pull_Mechanism():
         exit()
 
 if __name__ == "__main__":
-    push_pull_Mechanism()
+    base_station_mechanism()
 
 
 
