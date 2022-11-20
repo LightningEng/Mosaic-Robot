@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 
 """
-Module to play sounds when ultrasonic sensor detects object within hot-encoded ranges.
-This file must be run on the robot.
+Module to run the algorithm for the the robot.
 """
 
 from utils.brick import TouchSensor, Motor, wait_ready_sensors, reset_brick
