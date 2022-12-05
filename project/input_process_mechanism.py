@@ -32,7 +32,7 @@ def getInputByKeyboard():
         arr = []
         user_input = ''
 
-        print("Must Enter 25 Numbers! Only 0s and 1s")
+        print("Must Enter 25 Numbers! Only 0s and 1s! At most 15 1s!")
 
         numOnes = 0
 
@@ -92,7 +92,7 @@ def button1Checking():
 def getInputByTouchSensors():
     global arr
     while True:
-        print("Must Enter 25 Numbers! Only 0s and 1s")
+        print("Must Enter 25 Numbers! Only 0s and 1s! At most 15 1s!")
         #Define the threads
         button0CheckingSystem = Thread(target=button0Checking)
         button1CheckingSystem = Thread(target=button1Checking)

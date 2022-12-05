@@ -53,11 +53,11 @@ def main():
         
         #Get Input from User
         while True:
-            promptInput = input("Keyboard (K)/ Touch sensors (T):")
-            if promptInput == "K":
+            promptInput = input("Keyboard (k)/ Touch sensors (t):")
+            if promptInput.lower() == "k":
                 inputArray = inputsGetter.getInputByKeyboard()
                 break
-            if promptInput == "T":
+            if promptInput.lower() == "t":
                 inputArray = inputsGetter.getInputByTouchSensors()
                 break
             print("Invalid Input")
